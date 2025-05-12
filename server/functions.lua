@@ -37,7 +37,6 @@ for name, data in pairs(Config.Items) do
     if GetResourceState("inventory") == "started" then
         exports["inventory"]:AddRestricted(name)
     end
-end
 
     ESX.RegisterUsableItem(name, function(playerId)
         local xPlayer = ESX.GetPlayerFromId(playerId)
