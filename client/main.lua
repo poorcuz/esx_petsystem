@@ -195,10 +195,11 @@ end
 
 Citizen.CreateThread(function()
     Wait(5000)
-    while not exports["inventory"] or not Config.Items do Wait(10) end
 
-    for name, data in pairs(Config.Items) do
-        exports["inventory"]:AddCloseOnUse(name)
-        exports["inventory"]:AddRestricted(name)
+    if GetResourceState("inventory") == "started" then
+        for name, data in pairs(Config.Items) do
+            exports["inventory"]:AddCloseOnUse(name)
+            exports["inventory"]:AddRestricted(name)
+        end
     end
 end)

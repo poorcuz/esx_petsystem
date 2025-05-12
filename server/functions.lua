@@ -34,8 +34,11 @@ function GetPetsFromSource(source)
 end
 
 for name, data in pairs(Config.Items) do
-    exports["inventory"]:AddRestricted(name)
-    
+    if GetResourceState("inventory") == "started" then
+        exports["inventory"]:AddRestricted(name)
+    end
+end
+
     ESX.RegisterUsableItem(name, function(playerId)
         local xPlayer = ESX.GetPlayerFromId(playerId)
         local success, msg = GivePetToSource(playerId, data)
